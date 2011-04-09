@@ -1,0 +1,10 @@
+
+idbjava (User Graphics Interface para Java y DBJava)
+====================================================
+
+Desarrollar una interfaz grafica de usuario (gui) didactica para comprender el bytecode de jvm
+de un codigo java. La interfaz puede proveer de pintado secciones para metodos y campos. Tambien
+se puede proveer funciones basicas de edicion (copiar y pegar).
+
+
+

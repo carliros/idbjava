@@ -1,0 +1,131 @@
+
+Propuesta de Proyecto
+=====================
+
+Nombre: idbjava (User Graphics Interface para Java y DBJava)
+
+Descripcion: Desarrollar una interfaz grafica de usuario (gui) didactica para comprender el bytecode de jvm
+             de un codigo java. La interfaz puede proveer pintado secciones para metodos y campos. Tambien
+             se puede proveer funciones basicas de edicion (copiar y pegar).
+
+Detalles: La ventana principal puede estar dividido en dos partes; el de la izq puede contener el codigo
+          java, y el de la der puede contener el bytecode generado por el programa dbjava.
+
+Programas que se utilizara:
+    - haskell: lenguaje de programacion que se uasara
+    - javac: el compilador para generar el bytecode del jvm para el codigo java
+    - dbjava: el programa deserializador de bytecodes (esta escrito en haskell)
+    - libreria grafica: puede ser wxhaskell o qthaskell, u otra para haskell
+
+Ejemplo de de los que se quiere diseñar:
+
+------------------------------------------------------------------------------------------------------------|
+| File   Editar                                                                                       - # x |
+|-----------------------------------------------------------------------------------------------------------|
+| src: /home/carlos/code/Hello.java                                                      ||Generar Bytecode||
+|-----------------------------------------------------------------------------------------------------------|
+|                                   |                                                                       |
+| class Hola {                      |   Magic -> 0xcafe 0xbabe                                              |
+|   public static void              |   Minor_Version -> 0                                                  |
+|    main(String args []){          |   Major_Version -> 50                                                 |
+|      System.out.println("Hola");  |   Constant_Pool ->                                                    |
+|   }                               |   [                                                                   |
+| }                                 |        { Tag = MethodRef, index_cp = 6, index_NameAndType_cp = 15 }   |
+|                                   |        { Tag = FieldRef, index_cp = 16, index_NameAndType_cp = 17 }   |
+|                                   |        { Tag = String, index_cp = 18 }                                |
+|                                   |        { Tag = MethodRef, index_cp = 19, index_NameAndType_cp = 20 }  |
+|                                   |        { Tag = Class, index_cp = 18 }                                 |
+|                                   |        { Tag = Class, index_cp = 21 }                                 |
+|                                   |        { Tag = Utf8, length = 6, Value = <init> }                     |
+|                                   |        { Tag = Utf8, length = 3, Value = ()V }                        |
+|                                   |        { Tag = Utf8, length = 4, Value = Code }                       |
+|                                   |        { Tag = Utf8, length = 15, Value = LineNumberTable }           |
+|                                   |        { Tag = Utf8, length = 4, Value = main }                       |
+|                                   |        { Tag = Utf8, length = 22, Value = ([Ljava/lang/String;)V }    |
+|                                   |        { Tag = Utf8, length = 10, Value = SourceFile }                |
+|                                   |        { Tag = Utf8, length = 9, Value = Hola.java }                  |
+|                                   |        { Tag = NameAndType, index_cp = 7, index_desc_cp = 8 }         |
+|                                   |        { Tag = Class, index_cp = 22 }                                 |
+|                                   |        { Tag = NameAndType, index_cp = 23, index_desc_cp = 24 }       |
+|                                   |        { Tag = Utf8, length = 4, Value = Hola }                       |
+|                                   |        { Tag = Class, index_cp = 25 }                                 |
+|                                   |        { Tag = NameAndType, index_cp = 26, index_desc_cp = 27 }       |
+|                                   |        { Tag = Utf8, length = 16, Value = java/lang/Object }          |
+|                                   |        { Tag = Utf8, length = 16, Value = java/lang/System }          |
+|                                   |        { Tag = Utf8, length = 3, Value = out }                        |
+|                                   |        { Tag = Utf8, length = 21, Value = Ljava/io/PrintStream; }     |
+|                                   |        { Tag = Utf8, length = 19, Value = java/io/PrintStream }       |
+|                                   |        { Tag = Utf8, length = 7, Value = println }                    |
+|                                   |        { Tag = Utf8, length = 21, Value = (Ljava/lang/String;)V }]    |
+|                                   |    AccessFlag -> Super                                                |
+|                                   |    ThisClass_index_cp -> 5                                            |
+|                                   |    SuperClass_index_cp -> 6                                           |
+|                                   |    length_interfaces = 0                                              |
+|                                   |    Interfaces ->                                                      |
+|                                   |    []                                                                 |
+|                                   |    length_fields = 0                                                  |
+|                                   |    Fields ->                                                          |
+|                                   |    []                                                                 |
+|                                   |    length_methods = 2                                                 |
+|                                   |    Methods ->                                                         |
+|                                   |    [Method_Info                                                       |
+|                                   |     {                                                                 |
+|                                   |     , index_name_cp = 7                                               |
+|                                   |     , index_desc_cp = 8                                               |
+|                                   |     , length_Attr = 1                                                 |
+|                                   |     , Attributes ->                                                   |
+|                                   |       [   AttributeCode                                               |
+|                                   |           { index_name = 9                                            |
+|                                   |           , length = 29                                               |
+|                                   |           , length_stack = 1                                          |
+|                                   |           , length_local = 1                                          |
+|                                   |           , length_code = 5                                           |
+|                                   |           ,   0 aload_0                                               |
+|                                   |               1 invokespecial 0 1                                     |
+|                                   |               4 return                                                |
+|                                   |           , length_exeptions = 0                                      |
+|                                   |           , []                                                        |
+|                                   |           , length_attributes = 1                                     |
+|                                   |           , Attributes ->                                             |
+|                                   |             [   AttributeLineNumberTable                              |
+|                                   |                 { index_name = 10                                     |
+|                                   |                 , length = 6                                          |
+|                                   |                 , length_linenumber = 1                               |
+|                                   |                 ,   { start_counter = 0, line_number = 1 }            |
+|                                   |                 }]                                                    |
+|                                   |           }]                                                          |
+|                                   |     }                                                                 |
+|                                   |     Method_Info                                                       |
+|                                   |     { PublicStatic                                                    |
+|                                   |     , index_name_cp = 11                                              |
+|                                   |     , index_desc_cp = 12                                              |
+|                                   |     , length_Attr = 1                                                 |
+|                                   |     , Attributes ->                                                   |
+|                                   |       [   AttributeCode                                               |
+|                                   |           { index_name = 9                                            |
+|                                   |           , length = 37                                               |
+|                                   |           , length_stack = 2                                          |
+|                                   |           , length_local = 1                                          |
+|                                   |           , length_code = 9                                           |
+|                                   |           ,   0 getstatic 0 2                                         |
+|                                   |               3 ldc 3                                                 |
+|                                   |               5 invokevirtual 0 4                                     |
+|                                   |               8 return                                                |
+|                                   |           , length_exeptions = 0                                      |
+|                                   |           , []                                                        |
+|                                   |           , length_attributes = 1                                     |
+|                                   |           , Attributes ->                                             |
+|                                   |             [   AttributeLineNumberTable                              |
+|                                   |                 { index_name = 10                                     |
+|                                   |                 , length = 10                                         |
+|                                   |                 , length_linenumber = 2                               |
+|                                   |                 ,   { start_counter = 0, line_number = 3 }            |
+|                                   |                     { start_counter = 8, line_number = 4 }            |
+|                                   |                 }]                                                    |
+|                                   |           }]                                                          |
+|                                   |     }]                                                                |
+|                                   |    length_attributes = 1                                              |
+|                                   |    Attributes ->                                                      |
+|                                   |    [   AttributeSourceFile                                            |
+|                                   |        { index_name = 13, length = 2, index_desc = 14 }]              |
+|-----------------------------------|-----------------------------------------------------------------------|
