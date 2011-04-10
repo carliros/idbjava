@@ -6,5 +6,11 @@ Desarrollar una interfaz grafica de usuario (gui) didactica para comprender el b
 de un codigo java. La interfaz puede proveer de pintado secciones para metodos y campos. Tambien
 se puede proveer funciones basicas de edicion (copiar y pegar).
 
+Para compilar: Debes tener instalado: wxhaskell, dbjava
+    make
+
+Para usar: la primera ves, crear una carpeta "tmp" en el directorio donde esta el binario.
+    ./idbjava
 
 
+i
